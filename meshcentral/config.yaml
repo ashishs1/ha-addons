@@ -1,0 +1,25 @@
+name: "MeshCentral"
+description: "Open source remote device management web site!"
+url: https://meshcentral.com/
+version: "1.0.0"
+slug: meshcentral
+init: false
+arch:
+  - aarch64
+  - amd64
+  - i386
+ports:
+  443/tcp: 444
+  80/tcp: null
+  4433/tcp: null
+ports_description:
+  443/tcp: MeshCentral HTTPS (needs to be passed through a proxy server, or set to 443)
+  80/tcp: MeshCentral HTTP redirect (not needed)
+  4433/tcp: MeshCentral port for Intel AMT (may be exposed)
+schema:
+  access_domain: str
+map:
+  - type: data
+    read_only: false
+image: ghcr.io/ashishs1/meshcentral-ha-addon/{arch}
+
