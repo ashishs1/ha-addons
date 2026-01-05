@@ -16,8 +16,8 @@ ports_description:
   4433/tcp: MeshCentral port for Intel AMT (may be exposed)
 schema:
   access_domain: str
-map:
-  - type: data
-    read_only: false
+# map:
+#   - type: data
+#     read_only: false
 image: ghcr.io/ashishs1/meshcentral-ha-addon/{arch}
 
