@@ -49,7 +49,10 @@ jobs:
     if: ${{ needs.detect-changed-addons.outputs.changedAddons != '' && needs.detect-changed-addons.outputs.changedAddons != '[]' }}
     needs: [detect-changed-addons, lint_config]
     runs-on: ubuntu-latest
-    environment: HAC
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
     name: Build ${{ matrix.arch }} ${{ matrix.addon }} add-on
     strategy:
       matrix:
