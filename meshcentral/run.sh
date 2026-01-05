@@ -45,5 +45,5 @@ fi
 
 # Start MeshCentral
 cd "$APP_PATH"
-exec node node_modules/meshcentral --datapath "$CONFIG_PATH"
+exec node node_modules/meshcentral --datapath "$CONFIG_PATH" | while IFS= read -r line; do echo "$(date '+%Y-%m-%d %H:%M:%S') $line"; done
 
