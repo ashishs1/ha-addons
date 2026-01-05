@@ -20,3 +20,4 @@ schema:
 #   - type: data
 #     read_only: false
 image: ghcr.io/ashishs1/meshcentral-{arch}
+
