@@ -19,4 +19,4 @@ schema:
 # map:
 #   - type: data
 #     read_only: false
-image: ghcr.io/ashishs1/meshcentral-ha-addon/{arch}
+image: ghcr.io/ashishs1/meshcentral-{arch}
