@@ -1,7 +1,4 @@
 build_from:
   amd64: ghcr.io/home-assistant/amd64-base:latest
   aarch64: ghcr.io/home-assistant/aarch64-base:latest
-  i386: ghcr.io/hassio-addons/base/i386:18.2.1
 
-identity: ghcr.io/ashishs1/meshcentral-ha-addon
-base_identity: ghcr.io/home-assistant

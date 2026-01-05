@@ -6,7 +6,6 @@ slug: meshcentral
 arch:
   - aarch64
   - amd64
-  - i386
 ports:
   443/tcp: 444
   80/tcp: null
