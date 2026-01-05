@@ -59,9 +59,10 @@ jobs:
         addon: ${{ fromJSON(needs.detect-changed-addons.outputs.changedAddons) }}
         arch: ["aarch64", "amd64", "i386"]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
       - name: Build and publish using HA builder
-      - uses: home-assistant/builder@master
+        uses: home-assistant/builder@master
         with:
           args: |
             --${{ matrix.arch }} \
