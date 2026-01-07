@@ -1,0 +1,14 @@
+name: "BentoPDF"
+description: "Privacy-first client-side PDF toolkit!"
+url: https://github.com/alam00000/bentopdf
+version: "1.15.4"
+slug: bentopdf
+init: false
+arch:
+  - aarch64
+  - amd64
+ports:
+  3000/tcp: 3000
+image: ghcr.io/ashishs1/bentopdf-{arch}
+# ingress: true
+# panel_icon: mdi:file-pdf-box
