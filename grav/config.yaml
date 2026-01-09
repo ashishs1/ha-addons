@@ -1,0 +1,16 @@
+name: "Grav"
+description: "Fast, Simple, and Flexible, file-based Web-platform"
+url: https://getgrav.org/
+version: "1.7.49.5"
+slug: grav
+arch:
+  - aarch64
+  - amd64
+init: false
+ports:
+  443/tcp: null
+  80/tcp: 16198
+ports_description:
+  443/tcp: HTTPS (needs to be passed through a proxy server, or set to 443)
+  80/tcp: HTTP
+image: ghcr.io/ashishs1/grav-{arch}
