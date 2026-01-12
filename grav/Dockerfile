@@ -26,6 +26,9 @@ RUN \
     php84-exif \
     php84-pecl-memcache \
     php84-pecl-memcached \
+    # apache2-utils \
+    # apache2-proxy \
+    # apache2-proxy-html \
     cronie \
     unzip
 
@@ -56,35 +59,29 @@ RUN { \
     } > /etc/php84/conf.d/php-recommended.ini
 
 # Define Grav specific version of Grav or use latest stable
-ARG GRAV_VERSION=latest
+ARG GRAV_VERSION=1.7.49.5
 
 # Install Grav
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
     unzip grav-admin.zip && \
-    mv grav-admin html && \
     rm grav-admin.zip && \
-    cd html && \
-    cp webserver-configs/htaccess.txt .htaccess && \
-    mkdir /defaults && \
-    mv user /defaults/ && \
-    rm -r backup logs webserver-configs && \
-    ln -s /data/user user && \
-    ln -s /data/backup backup && \
-    ln -s /data/logs logs
-
-RUN \
+    chown -R apache:apache grav-admin && \
+    chmod g+s grav-admin && \
+    chmod 775 grav-admin/cache && \
+    chmod g+s grav-admin/cache && \
+    cd grav-admin && \
+    mv webserver-configs/htaccess.txt .htaccess && \
+    rm -r webserver-configs && \
+    ln -s /data/grav-admin ../html && \
     chown -R apache:apache /var/www && \
-    sed -i 's#/var/www/localhost/htdocs#/var/www/html#' /etc/apache2/httpd.conf
+    sed -i 's#DocumentRoot "/var/www/localhost/htdocs"#DocumentRoot "/var/www/html"#' /etc/apache2/httpd.conf
+#     sed -i 's#/var/www/localhost/htdocs#/var/www/html#' /etc/apache2/httpd.conf
 
 # Create cron job for Grav maintenance scripts
 RUN echo "* * * * * cd /var/www/html;/usr/bin/php bin/grav scheduler 1>> /dev/null 2>&1" \
     >> /etc/crontabs/root
 
 # Copy data for add-on
-COPY grav.conf /etc/apache2/conf.d/
-COPY run.sh /
-RUN chmod a+x /run.sh
+COPY rootfs /
 
-CMD [ "/run.sh" ]
-# CMD ["sh", "-c", "crond && exec httpd -D FOREGROUND"]
