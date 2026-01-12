@@ -12,4 +12,4 @@ ports:
 ports_description:
   16198/tcp: HTTP
 #ingress: true
-
+image: ghcr.io/ashishs1/grav-{arch}
