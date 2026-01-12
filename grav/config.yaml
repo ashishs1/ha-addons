@@ -12,5 +12,4 @@ ports:
 ports_description:
   16198/tcp: HTTP
 #ingress: true
-#ingress_port: 8099
 

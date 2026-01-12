@@ -30,7 +30,8 @@ RUN \
     # apache2-proxy \
     # apache2-proxy-html \
     cronie \
-    unzip
+    unzip \
+    incron
 
 # Enable Apache Rewrite + Expires Module
 RUN \
