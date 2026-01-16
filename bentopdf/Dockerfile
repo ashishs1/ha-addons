@@ -21,7 +21,7 @@ RUN \
   git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
   && cd bentopdf \
   && npm install \
-  && npm audit fix \
+  && npm audit fix || true \
   && SIMPLE_MODE=true npm run build \
   && mv dist ../ \
   && cd .. \
