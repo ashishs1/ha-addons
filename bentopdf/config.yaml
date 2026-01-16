@@ -1,7 +1,7 @@
 name: "BentoPDF"
 description: "Privacy-first client-side PDF toolkit!"
 url: https://github.com/alam00000/bentopdf
-version: "1.15.4"
+version: "1.16.0"
 slug: bentopdf
 init: false
 arch:

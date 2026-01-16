@@ -6,16 +6,27 @@ RUN \
   apk add --no-cache \
     npm \
     curl \
-    unzip \
-    nginx
+    unzip
 
 WORKDIR /opt/bentopdf
 
+ARG BENTOPDF_VERSION=1.16.0
+
 # Download & install bentopdf
 RUN \
-  curl -LO https://github.com/alam00000/bentopdf/releases/download/v1.15.4/dist-1.15.4.zip \
-  && unzip dist-1.15.4.zip \
-  && rm dist-1.15.4.zip \
+  #curl -LO https://github.com/alam00000/bentopdf/releases/download/v${BENTOPDF_VERSION}/dist-${BENTOPDF_VERSION}.zip \
+  #&& unzip dist-${BENTOPDF_VERSION}.zip \
+  #&& rm dist-${BENTOPDF_VERSION}.zip \
+  git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
+  && cd bentopdf \
+  && npm install \
+  && npm audit fix \
+  && SIMPLE_MODE=true npm run build \
+  && mv dist ../ \
+  && cd .. \
+  && rm -rf bentopdf \
+  && mv dist/* . \
+  && rmdir dist \
   && apk del unzip \
   && npm install http-server
 
