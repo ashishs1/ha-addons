@@ -23,11 +23,10 @@ RUN \
   && npm install \
   && npm audit fix || true \
   && SIMPLE_MODE=true npm run build \
-  && mv dist ../ \
+  && npm prune --omit=dev \
+  && mv dist/* ../ \
   && cd .. \
   && rm -rf bentopdf \
-  && mv dist/* . \
-  && rmdir dist \
   && apk del unzip git \
   && npm install http-server
 
