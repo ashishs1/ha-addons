@@ -6,7 +6,8 @@ RUN \
   apk add --no-cache \
     npm \
     curl \
-    unzip
+    unzip \
+    git
 
 WORKDIR /opt/bentopdf
 
@@ -27,7 +28,7 @@ RUN \
   && rm -rf bentopdf \
   && mv dist/* . \
   && rmdir dist \
-  && apk del unzip \
+  && apk del unzip git \
   && npm install http-server
 
 # Copy data for add-on
