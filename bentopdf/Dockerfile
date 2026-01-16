@@ -21,14 +21,15 @@ RUN \
   git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
   && cd bentopdf \
   && npm install \
+  && npm install http-server \
   && npm audit fix || true \
   && SIMPLE_MODE=true npm run build \
   && npm prune --omit=dev \
   && mv dist/* ../ \
   && cd .. \
-  && rm -rf bentopdf \
-  && apk del unzip git \
-  && npm install http-server
+  # Clear cache in root also ~400MB \
+  && rm -rf bentopdf /root/* \
+  && apk del unzip git
 
 # Copy data for add-on
 # COPY rootfs/ /
