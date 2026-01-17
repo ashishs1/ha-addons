@@ -20,8 +20,10 @@ RUN \
   #&& rm dist-${BENTOPDF_VERSION}.zip \
   git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
   && cd bentopdf \
-  && npm install \
-  && npm install http-server \
+  && npm install
+
+RUN \
+  npm install -g http-server \
   && npm audit fix || true \
   && SIMPLE_MODE=true npm run build \
   && npm prune --omit=dev \
