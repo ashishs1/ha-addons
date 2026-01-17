@@ -27,8 +27,7 @@ RUN \
 RUN \
   npm install -g http-server \
   && npm prune --omit=dev \
-  && mv dist/* ../ \
-  && cd .. \
+  && mv bentopdf/dist/* ./ \
   && rm -rf bentopdf \
   # Clear cache in root also (~400MB) \
   && rm -rf /root/.npm \
