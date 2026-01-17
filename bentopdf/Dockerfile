@@ -27,8 +27,9 @@ RUN \
   && npm prune --omit=dev \
   && mv dist/* ../ \
   && cd .. \
-  # Clear cache in root also ~400MB \
-  && rm -rf bentopdf /root/.* \
+  && rm -rf bentopdf \
+  # Clear cache in root also (~400MB) \
+  && rm -rf /root/.npm \
   && apk del unzip git
 
 # Copy data for add-on
