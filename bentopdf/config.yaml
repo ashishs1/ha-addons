@@ -13,3 +13,4 @@ image: ghcr.io/ashishs1/bentopdf-{arch}
 # ingress: true
 # panel_icon: mdi:file-pdf-box
 
+

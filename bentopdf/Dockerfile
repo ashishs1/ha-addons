@@ -18,17 +18,19 @@ RUN \
   #curl -LO https://github.com/alam00000/bentopdf/releases/download/v${BENTOPDF_VERSION}/dist-${BENTOPDF_VERSION}.zip \
   #&& unzip dist-${BENTOPDF_VERSION}.zip \
   #&& rm dist-${BENTOPDF_VERSION}.zip \
-  git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
+  cd ../ \
+  && git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
   && cd bentopdf \
   && npm install \
   && npm audit fix || true \
-  && SIMPLE_MODE=true npm run build
-
-RUN \
-  npm install -g http-server \
+  && SIMPLE_MODE=true npm run build \
+  && npm install -g http-server \
   && npm prune --omit=dev \
-  && mv bentopdf/dist/* ./ \
+  && mv dist ../ \
+  && cd .. \
   && rm -rf bentopdf \
+  && mkdir bentopdf \
+  && mv dist bentopdf/ \
   # Clear cache in root also (~400MB) \
   && rm -rf /root/.npm \
   && apk del unzip git
