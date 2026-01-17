@@ -28,7 +28,7 @@ RUN \
   && mv dist/* ../ \
   && cd .. \
   # Clear cache in root also ~400MB \
-  && rm -rf bentopdf /root/* \
+  && rm -rf bentopdf /root/.* \
   && apk del unzip git
 
 # Copy data for add-on
