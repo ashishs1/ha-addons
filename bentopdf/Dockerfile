@@ -11,16 +11,11 @@ RUN \
 
 WORKDIR /opt/bentopdf
 
-ARG BENTOPDF_VERSION=1.16.0
+ARG BUILD_VERSION
 
 # Download & install bentopdf
 RUN \
-  #curl -LO https://github.com/alam00000/bentopdf/releases/download/v${BENTOPDF_VERSION}/dist-${BENTOPDF_VERSION}.zip \
-  #&& unzip dist-${BENTOPDF_VERSION}.zip \
-  #&& rm dist-${BENTOPDF_VERSION}.zip \
-  cd ../ \
-  && git clone https://github.com/alam00000/bentopdf.git --branch v${BENTOPDF_VERSION} \
-  && cd bentopdf \
+  git clone https://github.com/alam00000/bentopdf.git --branch v${BUILD_VERSION} . \
   && npm install \
   && npm audit fix || true \
   && SIMPLE_MODE=true npm run build \

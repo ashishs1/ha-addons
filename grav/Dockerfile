@@ -60,11 +60,11 @@ RUN { \
     } > /etc/php84/conf.d/php-recommended.ini
 
 # Define Grav specific version of Grav or use latest stable
-ARG GRAV_VERSION=1.7.49.5
+ARG BUILD_VERSION
 
 # Install Grav
 WORKDIR /var/www
-RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
+RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${BUILD_VERSION} && \
     unzip grav-admin.zip && \
     rm grav-admin.zip && \
     chown -R apache:apache grav-admin && \

@@ -8,7 +8,7 @@ A place to post my own add-ons. You can add this repo to you Homeassistant using
 This repository will primarily contain add-ons that are not available at other places, but are required by myself. In case of any bugs, do report.
 #### NOTE: I am not a developer. I do this as a hobby, and only write/post add-ons when I don't find any suitable substitute.
 Current list of add-ons:
-|  | **Add-on** |   | **Description** |
+|  | **Add-on** | **Upstream** | **Description** |
 |:--|:----------:|:----:|:----------- |
 |1. | [BentoPDF](./bentopdf) | <a href="https://www.bentopdf.com/"><img src="./bentopdf/icon.png" width="50" /></a> | Privacy-first client-side PDF toolkit! |
 |2. | [Grav](./grav) | <a href="https://getgrav.org/"><img src="./grav/icon.png" width="50" /></a> | Fast, Simple, and Flexible, file-based Web-platform |
