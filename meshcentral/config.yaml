@@ -15,8 +15,8 @@ ports_description:
   443/tcp: MeshCentral HTTPS (needs to be passed through a proxy server, or set to 443)
   80/tcp: MeshCentral HTTP redirect (not needed)
   4433/tcp: MeshCentral port for Intel AMT (may be exposed)
-# options:
-#   backup_files: false
+options:
+  backup_files: false
 schema:
   access_domain: str
   no_of_days_backup: int?

@@ -48,20 +48,31 @@ fi
 
 if [ -n "$N_BACKUPS" ]; then
   jq --arg nback "$N_BACKUPS" '.settings.autoBackup.keepLastDaysBackup=$nback' "$CONFIG_FILE" > /tmp/config.json
-  mv /tmp/config.json $CONFIG_FILE
+else
+  jq 'del(.settings.autoBackup.keepLastDaysBackup)' "$CONFIG_FILE" > /tmp/config.json || true
 fi
+mv /tmp/config.json $CONFIG_FILE
+
 if [ -n "$F_BACKUPS" ]; then
   jq --arg nback "$F_BACKUPS" '.settings.autoBackup.backupIntervalHours=$nback' "$CONFIG_FILE" > /tmp/config.json
-  mv /tmp/config.json $CONFIG_FILE
+else
+  jq 'del(.settings.autoBackup.backupIntervalHours)' "$CONFIG_FILE" > /tmp/config.json || true
 fi
+mv /tmp/config.json $CONFIG_FILE
+
 if [ "$BACKUP_FILES" ]; then
   jq '.settings.autoBackup.backupOtherFolders=true' "$CONFIG_FILE" > /tmp/config.json
-  mv /tmp/config.json $CONFIG_FILE
+else
+  jq '.settings.autoBackup.backupOtherFolders=false' "$CONFIG_FILE" > /tmp/config.json
 fi
+mv /tmp/config.json $CONFIG_FILE
+
 if [ -n "$WELTXT" ]; then
   jq --arg welt "$WELTXT" '.domains[""].welcomeText=$welt' "$CONFIG_FILE" > /tmp/config.json
-  mv /tmp/config.json $CONFIG_FILE
+else
+  jq 'del(.domains[""].welcomeText)' "$CONFIG_FILE" > /tmp/config.json || true
 fi
+mv /tmp/config.json $CONFIG_FILE
 
 # Start MeshCentral
 # Can run the following without --datapath flag also.
