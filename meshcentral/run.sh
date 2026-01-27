@@ -46,28 +46,28 @@ else
   jq --arg cert "$ACCESS_DOMAIN" '.settings.cert=$cert' /tmp/config.json > "$CONFIG_FILE"
 fi
 
-if [ -n "$N_BACKUPS" ]; then
+if [ "$N_BACKUPS" != "null" ]; then
   jq --arg nback "$N_BACKUPS" '.settings.autoBackup.keepLastDaysBackup=$nback' "$CONFIG_FILE" > /tmp/config.json
 else
   jq 'del(.settings.autoBackup.keepLastDaysBackup)' "$CONFIG_FILE" > /tmp/config.json || true
 fi
 mv /tmp/config.json $CONFIG_FILE
 
-if [ -n "$F_BACKUPS" ]; then
+if [ "$F_BACKUPS" != "null" ]; then
   jq --arg nback "$F_BACKUPS" '.settings.autoBackup.backupIntervalHours=$nback' "$CONFIG_FILE" > /tmp/config.json
 else
   jq 'del(.settings.autoBackup.backupIntervalHours)' "$CONFIG_FILE" > /tmp/config.json || true
 fi
 mv /tmp/config.json $CONFIG_FILE
 
-if [ "$BACKUP_FILES" ]; then
+if [ "$BACKUP_FILES" = "true" ]; then
   jq '.settings.autoBackup.backupOtherFolders=true' "$CONFIG_FILE" > /tmp/config.json
 else
   jq '.settings.autoBackup.backupOtherFolders=false' "$CONFIG_FILE" > /tmp/config.json
 fi
 mv /tmp/config.json $CONFIG_FILE
 
-if [ -n "$WELTXT" ]; then
+if [ "$WELTXT" != "null" ]; then
   jq --arg welt "$WELTXT" '.domains[""].welcomeText=$welt' "$CONFIG_FILE" > /tmp/config.json
 else
   jq 'del(.domains[""].welcomeText)' "$CONFIG_FILE" > /tmp/config.json || true
