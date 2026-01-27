@@ -11,7 +11,7 @@ RUN \
 WORKDIR /opt/meshcentral
 ARG BUILD_VERSION
 RUN \
-    npm install meshcentral@${BUILD_VERSION} \
+    npm install meshcentral@${BUILD_VERSION%-*} \
     && npm audit fix \
     # Remove cache \
     && rm -rf /root/.npm
