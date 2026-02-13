@@ -1,0 +1,19 @@
+name: "Memos"
+description: "Open source, self-hosted note-taking service"
+url: https://usememos.com/
+version: "0.26.1"
+slug: memos
+arch:
+  - aarch64
+  - amd64
+init: false
+map:
+  - type: data
+    read_only: false
+    path: /var/opt/memos
+ports:
+  5230/tcp: 5230
+ports_description:
+  5230/tcp: Memos Web Server
+image: ghcr.io/ashishs1/memos-{arch}
+
