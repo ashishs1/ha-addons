@@ -13,3 +13,4 @@ Current list of add-ons:
 |1. | [BentoPDF](./bentopdf) | <a href="https://www.bentopdf.com/"><img src="./bentopdf/icon.png" width="50" /></a> | Privacy-first client-side PDF toolkit! |
 |2. | [Grav](./grav) | <a href="https://getgrav.org/"><img src="./grav/icon.png" width="50" /></a> | Fast, Simple, and Flexible, file-based Web-platform |
 |3. | [MeshCentral](meshcentral) | <a href="https://meshcentral.com/"><img src="./meshcentral/icon.png" width="50" /></a> | Open source remote device management web site! |
+|4. | [Memos](memos) | <a href="https://usememos.com/"><img src="./memos/icon.png" width="50" /></a> | Open source, self-hosted note-taking service |
